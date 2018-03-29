@@ -1,0 +1,12 @@
+.nav-bar {
+  background-color: #0288D1;
+  color: white;
+}
+
+.nav-bar .logo {
+  margin-left: 20px;
+}
+
+.nav-bar .item {
+  margin-right: 20px;
+}
