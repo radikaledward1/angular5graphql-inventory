@@ -1,9 +1,39 @@
-<div id="demoModal" class="modal">
-    <div class="modal-content">
-        <h4>Modal header</h4>
-        <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-</div>
+<mz-modal [fixedFooter]="true">
+  <mz-modal-header>
+    <h4>Nuevo Producto</h4>
+  </mz-modal-header>
+  <mz-modal-content>
+    
+  	<div class="container">
+  		<div class="row">
+  			<div class="input-field col l12">
+  				<input id="item" type="text" class="validate">
+          		<label for="item">Producto</label>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col l12">
+  				<mz-select-container>
+  					<select mz-select id="departamento" [placeholder]="'Departamento'">
+  						<option value="1">Ferreteria</option>
+  						<option value="2">Abarrotes</option>
+  						<option value="3">Electronica</option>
+					</select>
+  				</mz-select-container>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="input-field col l12">
+  				<input id="cantidad" type="text" class="validate">
+          		<label for="cantidad">Cantidad</label>
+  			</div>
+  		</div>
+  	</div>
+
+
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Cancelar</button>
+    <button mz-button [flat]="true" mz-modal-close>Aceptar</button>
+  </mz-modal-footer>
+</mz-modal>

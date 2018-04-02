@@ -3,6 +3,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from "@angular/router";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, Apollo } from 'apollo-angular';
@@ -11,13 +12,16 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 //Componentes
 import { AppComponent } from './app.component';
-import { InventarioComponent } from './inventario/inventario.component'
+import { InventarioComponent } from './inventario/inventario.component';
 
 //Services
-import { InventarioService } from './servicios/inventario.service'
+import { InventarioService } from './servicios/inventario.service';
 
 //Modales
-import { NuevoUsuarioModal } from './modales/nuevousuario.modal'
+import { NuevoUsuarioModal } from './modales/nuevousuario.modal';
+
+//Extras
+import { MzSelectModule, MzButtonModule, MzModalModule } from 'ng2-materialize';
 
 const appRoutes: Routes = [
 
@@ -34,12 +38,18 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
     HttpClientModule,
     ApolloModule,
-    HttpLinkModule
+    HttpLinkModule,
+    MzModalModule,
+    MzButtonModule,
+    MzSelectModule
   ],
   providers: [ InventarioService ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ],
+  entryComponents: [ NuevoUsuarioModal ]
+
 })
 export class AppModule {
 

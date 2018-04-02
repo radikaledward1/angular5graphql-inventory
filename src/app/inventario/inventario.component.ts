@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+
 import { InventarioService } from '../servicios/inventario.service';
+import { NuevoUsuarioModal } from '../modales/nuevousuario.modal';
+
+import { MzModalService } from 'ng2-materialize';
+
 //import { Apollo } from 'apollo-angular';
 //import { Observable } from 'rxjs/Observable';
 //import { map } from 'rxjs/operators';
 
 //import { Item, Catalogo } from '../modelos/tipos.models';
 //import * as Query from '../queries/global.queries';
-import * as $ from 'jquery';
+//import * as $ from 'jquery';
 
 @Component({
 	selector: 'inventario',
@@ -19,7 +24,7 @@ export class InventarioComponent implements OnInit {
 	//inventario : Observable<Item[]>;
 	inventario : any[] = [];
 
-	constructor ( private inventarioservice : InventarioService){
+	constructor ( private inventarioservice : InventarioService, private modalService: MzModalService){
 
 	}
 
@@ -40,12 +45,17 @@ export class InventarioComponent implements OnInit {
 
 		/*
 		$(document).ready(function(){
-        $("button").click(function(){
-            alert("Esto es una prueba que funciona Jquery");
-        });
-    });
+        	$("button").click(function(){
+           		alert("Esto es una prueba que funciona Jquery");
+        	});
+    	});
 		*/
 
+	}
+
+	crearNuevoUsuario ()
+	{
+		this.modalService.open(NuevoUsuarioModal);
 	}
 
 }
