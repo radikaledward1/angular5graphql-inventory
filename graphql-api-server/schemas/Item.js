@@ -5,4 +5,10 @@ module.exports = `
     catalogo: Catalogo
     cantidad: Int
   }
+  
+  input NuevoItem {
+    item: String!
+    catalogo_id: Int
+    cantidad: Int
+  }
 `

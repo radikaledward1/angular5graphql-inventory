@@ -1,7 +1,7 @@
 module.exports = `
   type Catalogo {
     id: ID!
-    catalogo: String!
+    catalogo: String
     descripcion: String
   }
 `

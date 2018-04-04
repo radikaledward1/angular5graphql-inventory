@@ -8,7 +8,13 @@ const resolvers = require('./resolvers')
 const Types = `
   type Query {
     inventario: [Item]
+    catalogos: [Catalogo]
   }
+
+  type Mutation {
+    agregarProducto(item: NuevoItem) : Item
+  }
+
 `
 /*
 const resolvers = {

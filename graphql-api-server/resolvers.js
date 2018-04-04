@@ -5,7 +5,14 @@ const resolvers = {
 
   Query: {
 
-    inventario: () => Item.query().eager('[catalogo]')
+    inventario: () => Item.query().eager('[catalogo]'),
+    catalogos: () => Catalogo.query()
+  },
+  Mutation: {
+    agregarProducto: (_, args) => {
+      //return Item.query().insert({item: args.item, catalogo_id: args.catalogo, cantidad: args.cantidad})
+      return Item.query().insert(args.item)
+    }
   }
 
 }
