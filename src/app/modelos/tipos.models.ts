@@ -5,8 +5,7 @@ export interface Catalogo {
 }
 
 export interface Item {
-  id: number;
   item: string;
-  catalogo: Catalogo;
+  catalogo_id: number;
   cantidad: number;
 }

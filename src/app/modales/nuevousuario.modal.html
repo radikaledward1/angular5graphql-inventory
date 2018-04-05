@@ -3,28 +3,26 @@
     <h4>Nuevo Producto</h4>
   </mz-modal-header>
   <mz-modal-content>
-    
+
   	<div class="container">
   		<div class="row">
   			<div class="input-field col l12">
-  				<input id="item" type="text" class="validate">
+  				<input id="item" type="text" class="validate" [(ngModel)] = "producto">
           		<label for="item">Producto</label>
   			</div>
   		</div>
   		<div class="row">
   			<div class="col l12">
   				<mz-select-container>
-  					<select mz-select id="departamento" [placeholder]="'Departamento'">
-  						<option value="1">Ferreteria</option>
-  						<option value="2">Abarrotes</option>
-  						<option value="3">Electronica</option>
+  					<select mz-select id="departamento" [placeholder]="'Departamento'" [(ngModel)] = "departamento">
+  						<option *ngFor="let catalogo of catalogos" [value]="catalogo.id">{{catalogo.catalogo}}</option>
 					</select>
   				</mz-select-container>
   			</div>
   		</div>
   		<div class="row">
   			<div class="input-field col l12">
-  				<input id="cantidad" type="text" class="validate">
+  				<input id="cantidad" type="text" class="validate" [(ngModel)] = "cantidad">
           		<label for="cantidad">Cantidad</label>
   			</div>
   		</div>
@@ -34,6 +32,6 @@
   </mz-modal-content>
   <mz-modal-footer>
     <button mz-button [flat]="true" mz-modal-close>Cancelar</button>
-    <button mz-button [flat]="true" mz-modal-close>Aceptar</button>
+    <button mz-button [flat]="true" (click) = "registrarProducto()">Aceptar</button>
   </mz-modal-footer>
 </mz-modal>

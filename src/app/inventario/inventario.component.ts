@@ -9,7 +9,6 @@ import { MzModalService } from 'ng2-materialize';
 //import { Observable } from 'rxjs/Observable';
 //import { map } from 'rxjs/operators';
 
-//import { Item, Catalogo } from '../modelos/tipos.models';
 //import * as Query from '../queries/global.queries';
 //import * as $ from 'jquery';
 

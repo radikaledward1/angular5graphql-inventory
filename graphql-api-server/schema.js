@@ -14,7 +14,6 @@ const Types = `
   type Mutation {
     agregarProducto(item: NuevoItem) : Item
   }
-
 `
 /*
 const resolvers = {

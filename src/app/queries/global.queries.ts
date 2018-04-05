@@ -16,3 +16,21 @@ query inventario {
   }
 }
 `;
+
+export const Catalogos = gql`
+query catalogos {
+  catalogos {
+    id
+    catalogo
+    descripcion
+  }
+}
+`;
+
+export const NuevoProducto = gql`
+mutation nuevoProducto($item: NuevoItem) {
+  agregarProducto(item: $item) {
+    id
+  }
+}
+`;
