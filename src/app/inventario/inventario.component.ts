@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 import { InventarioService } from '../servicios/inventario.service';
 import { NuevoUsuarioModal } from '../modales/nuevousuario.modal';
@@ -21,6 +22,10 @@ export class InventarioComponent implements OnInit {
 
 	//inventario: Item[] = [];
 	//inventario : Observable<Item[]>;
+
+	dtOptions: DataTables.Settings = {};
+	dtTrigger: Subject<any> = new Subject();
+
 	inventario : any[] = [];
 
 	constructor ( private inventarioservice : InventarioService, private modalService: MzModalService){
@@ -28,6 +33,12 @@ export class InventarioComponent implements OnInit {
 	}
 
 	ngOnInit() {
+
+		this.dtOptions = {
+	      pagingType: 'numbers',
+	      lengthChange: false,
+	      pageLength: 2
+	    };
 
 		/*
 		this.apollo.watchQuery({
@@ -40,6 +51,7 @@ export class InventarioComponent implements OnInit {
 		this.inventarioservice.getInventario().subscribe((response : any) => {
 
 			this.inventario = response.data.inventario;
+			this.dtTrigger.next();
 		});
 
 		/*
