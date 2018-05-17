@@ -51,4 +51,15 @@ export class InventarioService {
     };
   }
 
+  removeItem(item_id: number)
+  {
+    return this.apollo.mutate({
+      mutation: Query.RemoverProducto,
+      variables: {
+        item: item_id
+      }
+    })
+
+  }
+
 }

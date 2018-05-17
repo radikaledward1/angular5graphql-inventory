@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentRef, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
-import { InventarioService } from '../servicios/inventario.service';
 import { NuevoUsuarioModal } from '../modales/nuevousuario.modal';
+import { ConfirmModal } from '../modales/confirm.modal';
 
+import { InventarioService } from '../servicios/inventario.service';
 import { MzModalService } from 'ng2-materialize';
 
 //import { Apollo } from 'apollo-angular';
@@ -28,6 +29,9 @@ export class InventarioComponent implements OnInit {
 
 	inventario : any[] = [];
 
+	public itemid : number;
+	public confirmModalRef: ComponentRef<ConfirmModal>;
+
 	constructor ( private inventarioservice : InventarioService, private modalService: MzModalService){
 
 	}
@@ -37,7 +41,7 @@ export class InventarioComponent implements OnInit {
 		this.dtOptions = {
 	      pagingType: 'numbers',
 	      lengthChange: false,
-	      pageLength: 2
+	      pageLength: 5
 	    };
 
 		/*
@@ -67,6 +71,24 @@ export class InventarioComponent implements OnInit {
 	crearNuevoUsuario ()
 	{
 		this.modalService.open(NuevoUsuarioModal);
+	}
+
+	eliminarProducto (event)
+	{
+		this.itemid = event.target.id;
+		let fnsuccess : Function;
+
+		this.confirmModalRef = <ComponentRef<ConfirmModal>>this.modalService.open(ConfirmModal, { titulo : 'Eliminar Producto', mensaje : '¿Esta seguro de eliminar este producto del inventario?' });
+		fnsuccess = () => this.removerProducto();
+		this.confirmModalRef.instance.callback = fnsuccess;
+
+		console.log(event);
+	}
+
+	removerProducto()
+	{
+		//this.confirmModalRef.instance.modalComponent.close();
+		console.log(this.itemid);
 	}
 
 }

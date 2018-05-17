@@ -34,3 +34,11 @@ mutation nuevoProducto($item: NuevoItem) {
   }
 }
 `;
+
+export const RemoverProducto = gql`
+mutation borrarProducto ($item: Int!) {
+  removerProducto(item: $item) {
+  	id
+  }
+}
+`;

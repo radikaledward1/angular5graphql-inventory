@@ -13,6 +13,7 @@ const Types = `
 
   type Mutation {
     agregarProducto(item: NuevoItem) : Item
+    removerProducto(item: Int!) : Item
   }
 `
 /*

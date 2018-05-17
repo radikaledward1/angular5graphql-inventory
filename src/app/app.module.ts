@@ -22,6 +22,7 @@ import { InventarioService } from './servicios/inventario.service';
 
 //Modales
 import { NuevoUsuarioModal } from './modales/nuevousuario.modal';
+import { ConfirmModal } from './modales/confirm.modal';
 
 //Extras
 import { MzSelectModule, MzButtonModule, MzModalModule } from 'ng2-materialize';
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     InventarioComponent,
-    NuevoUsuarioModal
+    NuevoUsuarioModal,
+    ConfirmModal
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ const appRoutes: Routes = [
   ],
   providers: [ InventarioService ],
   bootstrap: [ AppComponent ],
-  entryComponents: [ NuevoUsuarioModal ]
+  entryComponents: [ NuevoUsuarioModal, ConfirmModal ]
 
 })
 export class AppModule {

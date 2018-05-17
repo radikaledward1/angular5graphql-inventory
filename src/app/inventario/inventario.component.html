@@ -29,7 +29,7 @@
                 <td>{{ item.item }}</td>
                 <td>{{ item.catalogo.catalogo }}</td>
                 <td>{{ item.cantidad }}</td>
-                <td><i class="material-icons">delete</i></td>
+                <td><a id = "{{item.id}}" mz-button [flat] = "true" (click) = "eliminarProducto($event)"><i class="material-icons">delete</i></a></td>
               </tr>
           </tbody>
 

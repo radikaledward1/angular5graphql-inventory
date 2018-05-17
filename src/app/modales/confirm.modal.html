@@ -1,0 +1,21 @@
+<mz-modal>
+
+  <mz-modal-content>
+
+  	<div class="container">
+  		<div class="row">
+  			<div class="col l12">
+  				<h4>{{ titulo }}</h4>
+          {{ mensaje }}
+  			</div>
+  		</div>
+  	</div>
+
+  </mz-modal-content>
+
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Cancelar</button>
+    <button mz-button [flat]="true" (click) = "success()">Aceptar</button>
+  </mz-modal-footer>
+
+</mz-modal>
