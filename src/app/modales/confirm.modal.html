@@ -4,7 +4,7 @@
 
   	<div class="container">
   		<div class="row">
-  			<div class="col l12">
+  			<div class="col l8">
   				<h4>{{ titulo }}</h4>
           {{ mensaje }}
   			</div>
@@ -15,7 +15,7 @@
 
   <mz-modal-footer>
     <button mz-button [flat]="true" mz-modal-close>Cancelar</button>
-    <button mz-button [flat]="true" (click) = "success()">Aceptar</button>
+    <button mz-button [flat]="true" mz-modal-close (click) = "success()">Aceptar</button>
   </mz-modal-footer>
 
 </mz-modal>

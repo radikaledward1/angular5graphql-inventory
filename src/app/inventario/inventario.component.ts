@@ -32,7 +32,7 @@ export class InventarioComponent implements OnInit {
 	public itemid : number;
 	public confirmModalRef: ComponentRef<ConfirmModal>;
 
-	constructor ( private inventarioservice : InventarioService, private modalService: MzModalService){
+	constructor ( private inventarioservice : InventarioService, private modalService: MzModalService, private toastService: MzToastService){
 
 	}
 
@@ -73,22 +73,30 @@ export class InventarioComponent implements OnInit {
 		this.modalService.open(NuevoUsuarioModal);
 	}
 
-	eliminarProducto (event)
+	eliminarProducto (id)
 	{
-		this.itemid = event.target.id;
+		this.itemid = id;
 		let fnsuccess : Function;
 
 		this.confirmModalRef = <ComponentRef<ConfirmModal>>this.modalService.open(ConfirmModal, { titulo : 'Eliminar Producto', mensaje : '¿Esta seguro de eliminar este producto del inventario?' });
 		fnsuccess = () => this.removerProducto();
 		this.confirmModalRef.instance.callback = fnsuccess;
 
-		console.log(event);
 	}
 
 	removerProducto()
 	{
 		//this.confirmModalRef.instance.modalComponent.close();
-		console.log(this.itemid);
+
+		this.inventarioservice.removeItem(this.itemid).subscribe((response : any) => {
+
+			console.log(response.data.removerProducto);
+
+		}, (error) => {
+
+			console.log(error);
+		});
+
 	}
 
 }

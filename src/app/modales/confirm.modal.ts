@@ -25,7 +25,9 @@ export class ConfirmModal extends MzBaseModal implements OnInit {
 
   success()
   {
-    this.callback();
+    if (this.callback) {
+        this.callback();
+    }
   }
 
 }
