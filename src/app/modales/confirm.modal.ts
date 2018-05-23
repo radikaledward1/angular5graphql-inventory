@@ -13,6 +13,10 @@ export class ConfirmModal extends MzBaseModal implements OnInit {
   @Input() mensaje : string;
   @Input() callback : Function;
 
+  public modalOptions: Materialize.ModalOptions = {
+    dismissible: false
+  };
+
   constructor () {
 
     super();

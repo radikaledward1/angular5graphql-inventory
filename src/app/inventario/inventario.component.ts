@@ -1,4 +1,5 @@
-import { Component, ComponentRef, OnInit } from '@angular/core';
+import { Component, ComponentRef, OnInit, ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
 import { Subject } from 'rxjs/Subject';
 
 import { NuevoUsuarioModal } from '../modales/nuevousuario.modal';
@@ -6,6 +7,7 @@ import { ConfirmModal } from '../modales/confirm.modal';
 
 import { InventarioService } from '../servicios/inventario.service';
 import { MzModalService } from 'ng2-materialize';
+import { MzToastService } from 'ng2-materialize';
 
 //import { Apollo } from 'apollo-angular';
 //import { Observable } from 'rxjs/Observable';
@@ -24,6 +26,8 @@ export class InventarioComponent implements OnInit {
 	//inventario: Item[] = [];
 	//inventario : Observable<Item[]>;
 
+	@ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
 	dtOptions: DataTables.Settings = {};
 	dtTrigger: Subject<any> = new Subject();
 
@@ -52,11 +56,14 @@ export class InventarioComponent implements OnInit {
 		})
 		*/
 
+		/*
 		this.inventarioservice.getInventario().subscribe((response : any) => {
 
 			this.inventario = response.data.inventario;
 			this.dtTrigger.next();
+
 		});
+		*/
 
 		/*
 		$(document).ready(function(){
@@ -66,6 +73,18 @@ export class InventarioComponent implements OnInit {
     	});
 		*/
 
+		this.cargarInventarios();
+
+	}
+
+	cargarInventarios()
+	{
+		this.inventarioservice.getInventario().subscribe((response : any) => {
+
+			this.inventario = response.data.inventario;
+			this.dtTrigger.next();
+
+		});
 	}
 
 	crearNuevoUsuario ()
@@ -90,7 +109,12 @@ export class InventarioComponent implements OnInit {
 
 		this.inventarioservice.removeItem(this.itemid).subscribe((response : any) => {
 
-			console.log(response.data.removerProducto);
+			this.toastService.show('El producto se ha removido del inventario', 3000, 'rounded toast-success', () => {
+
+				this.rerender();
+				console.log(response.data.removerProducto);
+
+			});
 
 		}, (error) => {
 
@@ -98,5 +122,16 @@ export class InventarioComponent implements OnInit {
 		});
 
 	}
+
+	rerender()
+	{
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      // Destroy the table first
+      dtInstance.destroy();
+      // Call the dtTrigger to rerender again
+      //this.dtTrigger.next();
+			this.cargarInventarios();
+    });
+  }
 
 }

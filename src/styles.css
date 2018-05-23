@@ -11,18 +11,25 @@
   margin-right: 20px;
 }
 
-.toast-alert {
+/* Toast Message */
+
+.toast-success {
+  background-color: #4caf50 !important;
+  color: White;
+}
+
+.toast-warning {
   
 }
 
-.toast-alert .success {
+.toast-error {
 
 }
 
-.toast-alert .warning {
-
-}
-
-.toast-alert .error {
-
+/* Toast Position */
+@media (min-width: 993px) {
+    #toast-container {
+      top: 80%;
+      right: 45%;
+    }
 }
