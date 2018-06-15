@@ -37,6 +37,15 @@ export class InventarioService {
       mutation: Query.NuevoProducto,
       variables: {
         item: this.Item
+      },
+      update: (proxy, {data: { agregarProducto } }) => {
+
+        const data = proxy.readQuery({ query: Query.Inventarios });
+
+        data.inventario.push(agregarProducto);
+
+        proxy.writeQuery({ query: Query.Inventarios, data });
+
       }
     })
 
@@ -57,6 +66,19 @@ export class InventarioService {
       mutation: Query.RemoverProducto,
       variables: {
         item: item_id
+      },
+      update: (proxy, {data: { removerProducto } }) => {
+
+        const data = proxy.readQuery({ query: Query.RemoverProducto });
+
+        const index = data.removerProducto.edges.findIndex(edge => edge.node.id === item_id);
+
+        if (index > -1) {
+          data.removerProducto.edges.splice(index, 1);
+        }
+
+        proxy.writeQuery({ query: Query.RemoverProducto, data });
+        
       }
     })
 
