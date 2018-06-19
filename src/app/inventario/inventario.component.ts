@@ -26,8 +26,9 @@ export class InventarioComponent implements OnInit {
 	//inventario: Item[] = [];
 	//inventario : Observable<Item[]>;
 
-	@ViewChild(DataTableDirective)
-  dtElement: DataTableDirective;
+	//@ViewChild(DataTableDirective)
+    //dtElement: DataTableDirective;
+
 	dtOptions: DataTables.Settings = {};
 	dtTrigger: Subject<any> = new Subject();
 
@@ -43,6 +44,7 @@ export class InventarioComponent implements OnInit {
 	ngOnInit() {
 
 		this.dtOptions = {
+		  paging: false,
 	      pagingType: 'numbers',
 	      lengthChange: false,
 	      pageLength: 5
@@ -111,7 +113,7 @@ export class InventarioComponent implements OnInit {
 
 			this.toastService.show('El producto se ha removido del inventario', 3000, 'rounded toast-success', () => {
 
-				this.rerender();
+				//this.rerender();
 				console.log(response.data.removerProducto);
 
 			});
@@ -123,9 +125,10 @@ export class InventarioComponent implements OnInit {
 
 	}
 
-	rerender()
+	//Refresca manualmente la datatable
+	/*rerender()
 	{
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       // Destroy the table first
       dtInstance.destroy();
 
@@ -133,7 +136,8 @@ export class InventarioComponent implements OnInit {
       //this.dtTrigger.next();
       
 	  this.cargarInventarios();
-    });
-  }
+      });
+  	}
+  	*/
 
 }

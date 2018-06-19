@@ -38,15 +38,23 @@ export class InventarioService {
       variables: {
         item: this.Item
       },
+      refetchQueries: [{
+        query: Query.Inventarios
+      }]
+
+      /*
+      ,
       update: (proxy, {data: { agregarProducto } }) => {
 
-        const data = proxy.readQuery({ query: Query.Inventarios });
+        const response : any = proxy.readQuery({ query: Query.Inventarios });
 
-        data.inventario.push(agregarProducto);
+        response.data.inventario.push(agregarProducto);
 
-        proxy.writeQuery({ query: Query.Inventarios, data });
+        proxy.writeQuery({ query: Query.Inventarios, response });
 
       }
+      */
+
     })
 
   }
@@ -67,6 +75,12 @@ export class InventarioService {
       variables: {
         item: item_id
       },
+      refetchQueries: [{
+        query: Query.Inventarios
+      }]
+
+      /*
+      ,
       update: (proxy, {data: { removerProducto } }) => {
 
         const data = proxy.readQuery({ query: Query.RemoverProducto });
@@ -80,6 +94,8 @@ export class InventarioService {
         proxy.writeQuery({ query: Query.RemoverProducto, data });
         
       }
+      */
+
     })
 
   }
